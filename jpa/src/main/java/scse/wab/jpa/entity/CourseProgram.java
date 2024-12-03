@@ -19,11 +19,11 @@ public class CourseProgram {
     private Integer courseProgramID;
 
     @ManyToOne
-    @JoinColumn(name = "course_id", nullable = false)  // Liên kết với bảng Course
+    @JoinColumn(name = "courseid", nullable = false)  // Liên kết với bảng Course
     private Course course;
 
     @ManyToOne
-    @JoinColumn(name = "program_id", nullable = false)  // Liên kết với bảng Program
+    @JoinColumn(name = "programid", nullable = false)  // Liên kết với bảng Program
     private Program program;
 
     @Column(nullable = false, length = 255)

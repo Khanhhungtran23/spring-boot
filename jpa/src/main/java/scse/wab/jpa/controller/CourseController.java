@@ -28,9 +28,8 @@ public class CourseController {
     }
 
     @GetMapping("/{name}")
-    public ResponseEntity<Course> getCourse(@PathVariable String name) {
-        Optional<Course> course = courseService.getCourseByName(name);
-        return course.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public List<Course> getCourse(@PathVariable String name) {
+        return courseService.getCourseByName(name);
     }
 
     @PutMapping("/{id}")

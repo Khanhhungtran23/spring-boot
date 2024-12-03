@@ -22,11 +22,13 @@ public class ProgramService {
         if (sort != null && sort.equals("asc")) {
             return programRepository.findByNameContainingOrderByNameAsc(name);
         }
-        return programRepository.findByNameContaining(name);
+        else if (name != null) {
+            return programRepository.findByNameContaining(name); }
+        else return programRepository.findAll();
     }
 
-    public Optional<Program> getProgramByName(String name) {
-        return programRepository.findById(Integer.valueOf(name));
+    public List<Program> getProgramByName(String name) {
+        return programRepository.findByNameContaining(name);
     }
 
     public Program updateProgram(Integer programId, Program programDetails) {

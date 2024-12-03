@@ -13,23 +13,24 @@ import java.util.Optional;
 @RequestMapping("/api/p")
 public class ProgramController {
 
+
     @Autowired
     private ProgramService programService;
 
-    @PostMapping
+    @PostMapping("/new")
     public Program createProgram(@RequestBody Program program) {
         return programService.createProgram(program);
     }
 
-    @GetMapping
+
+    @GetMapping("/all")
     public List<Program> getPrograms(@RequestParam(required = false) String name, @RequestParam(required = false) String sort) {
         return programService.getAllPrograms(name, sort);
     }
 
     @GetMapping("/{name}")
-    public ResponseEntity<Program> getProgram(@PathVariable String name) {
-        Optional<Program> program = programService.getProgramByName(name);
-        return program.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public List<Program> getProgram(@PathVariable String name) {
+        return programService.getProgramByName(name);
     }
 
     @PutMapping("/{id}")

@@ -22,11 +22,13 @@ public class CourseService {
         if (sort != null && sort.equals("asc")) {
             return courseRepository.findByNameContainingOrderByNameAsc(name);
         }
-        return courseRepository.findByNameContaining(name);
+        else if (name != null) {
+        return courseRepository.findByNameContaining(name); }
+        else return courseRepository.findAll();
     }
 
-    public Optional<Course> getCourseByName(String name) {
-        return courseRepository.findById(Integer.valueOf(name));
+    public List<Course> getCourseByName(String name) {
+        return courseRepository.findByNameContaining(name);
     }
 
     public Course updateCourse(Integer courseId, Course courseDetails) {

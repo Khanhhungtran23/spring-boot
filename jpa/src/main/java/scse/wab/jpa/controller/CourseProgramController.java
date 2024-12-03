@@ -15,7 +15,7 @@ public class CourseProgramController {
     @Autowired
     private CourseProgramService courseProgramService;
 
-    @PostMapping
+    @PostMapping("/new")
     public CourseProgram createCourseProgram(@RequestBody CourseProgram courseProgram) {
         return courseProgramService.createCourseProgram(courseProgram);
     }
